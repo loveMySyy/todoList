@@ -1,0 +1,832 @@
+*{
+	padding:0px;
+	margin:0px;
+}
+html,body{
+	height:100%;
+	position:relative;
+	width:1350px;
+}
+aside{
+	width:90px;
+	height:100%;
+	background:#3B3B3B;
+	float:left;
+	position:relative;
+}
+aside>div{
+	cursor:pointer;
+	position:relative;
+}
+aside div.project{
+	width:100%;
+	height:50px;
+}
+aside div.project:hover{
+	background:#C4C4C4;
+}
+aside div.function{
+	width:100%;
+	height:50px;
+}
+aside div.function:hover{
+	background:#C4C4C4;
+}
+#myPersonal{
+	width:100%;
+	height:90px;
+	border-bottom:1px solid #878787;
+}
+#myself{
+	width:50px;
+	height:50px;
+	background:#fff;
+	position:absolute;
+	margin: auto;
+	top: 5px; left: 0;right: 0;  
+	background-image:url('icon.png');
+	background-position:-126px -1633px;
+	
+}
+#myPersonal p{
+	position:absolute;
+	bottom:10px;
+	color:#878787;
+	font-size:12px;
+	width:60%;
+	text-align:center;
+	left:50%;
+	margin-left:-30%;
+}
+
+span.mark{
+	display:inline-block;
+	width:25px;
+	height:25px;
+	margin-left:15px;
+	margin-top:15px;
+	background-image:url('icon.png');
+}
+#task span.mark{
+	background-position:-5px -1330px;
+}
+#note span.mark{
+	background-position:-5px -1360px;
+}
+#project span.mark{
+	background-position:-36px -1390px;
+}
+span.content{
+	position:absolute;
+	display:inline-block;
+	color:#878787;
+	font-size:15px;
+	margin-left:5px;
+	top:30%;
+}
+#project span.content{
+	color:#7EC0EE;
+}
+
+span.mark2{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	margin-left:30px;
+	margin-top:10px;
+	background-image:url('icon.png');
+}
+#search span.mark2{
+	background-position:-5px -1610px;
+}
+#email span.mark2{
+	background-position:-5px -1580px;
+}
+#else span.mark2{
+	background-position:-5px -1640px;
+}
+section{
+	height:100%;
+	margin-left:90px;
+}
+#taskView{
+	display:none;
+	height:100%;
+}
+#taskView p.title{
+	font-size:20px;
+	padding-left:20px;
+	width:100%;
+	height:40px;
+	line-height:40px;
+	border-bottom:1px solid #c4c4c4;
+}
+#taskList{
+	margin-top:20px;
+	list-style-type:none;
+	width:100%;
+	height:88%;
+}
+#taskList p{
+	width:100%;
+	font-size:20px;
+	height:40px;
+	line-height:40px;
+	color:#fff;
+	font-weight:600;
+}
+#taskList p.red{
+	background:red;
+}
+#taskList p.yellow{
+	background:orange;
+}
+#taskList p.blue{
+	background:blue;
+}
+#taskList p.green{
+	background:green;
+}
+#taskList li{
+	list-style-type:none;
+}
+#taskList>li{
+	width:48%;
+	height:40%;
+	float:left;
+	margin:0 1%;
+}
+#taskList span{
+	cursor:pointer;
+}
+#taskList>li>ul{
+	height:80%;
+	overflow:auto;
+}
+
+#taskList>li>ul>li>ul>li{
+	font-size:20px;
+}
+#taskList>li>ul>li>ul>li.hover{
+	background:#c4c4c4;
+}
+#redTask span{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	background-image:url('icon.png');
+	margin:0px 20px;
+	position:relative;
+	top:3px;
+	background-position:-4px -938px;
+}
+#redTask span.hover{
+	background-position:-36px -938px;
+}
+#yellowTask span{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	background-image:url('icon.png');
+	margin:0px 20px;
+	position:relative;
+	top:3px;
+	background-position:-4px -970px;
+}
+#yellowTask span.hover{
+	background-position:-36px -970px;
+}
+#blueTask span{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	background-image:url('icon.png');
+	margin:0px 20px;
+	position:relative;
+	top:3px;
+	background-position:-4px -1002px;
+}
+#blueTask span.hover{
+	background-position:-36px -1002px;
+}
+#greenTask span{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	background-image:url('icon.png');
+	margin:0px 20px;
+	position:relative;
+	top:3px;
+	background-position:-4px -1034px;
+}
+#greenTask span.hover{
+	background-position:-36px -1034px;
+}
+#noteView{
+	display:none;
+	height:100%;
+	position:relative;
+}
+#noteView>p{
+	color:#C4C4C4;
+	height:40px;
+	line-height:40px;
+	padding-left:15px;
+	border-bottom:1px solid #C4C4C4;
+}
+#noteView textarea{
+	margin:30px 15px;
+}
+#noteView ul{
+	position:absolute;
+	left:230px;
+	top:45px;
+}
+#noteView ul li {
+	list-style-type:none;
+	float:left;
+	padding:5px 10px;
+	width:178px;
+	border:1px solid #C4C4C4;
+	margin:30px 10px;
+	cursor:pointer;
+	position:relative;
+}
+span.edit{
+	width:35px;
+	height:35px;
+	background-image:url('icon.png');
+	background-position:-5px -1800px;
+	position:absolute;
+	right:-5px;
+	top:0px;
+	display:none;
+}
+#noteView ul li div.editOption{
+	width:50px;
+	height:50px;
+	z-index:1;
+	position:absolute;
+	top:30px;
+	right:-25px;
+	background:#fff;
+	border:1px solid #C4C4C4;
+	text-align:center;
+	display:none;
+}
+#noteView ul li div.editOption p{
+	height:25px;
+	line-height:25px;
+}
+#noteView ul li div.editOption p:hover{
+	background:#cccccc;
+}
+#noteView ul li p.date{
+	color:#C4C4C4;
+	font-size:12px;
+	height:30px;
+	line-height:30px;
+}
+#noteView ul li p.toDoThing{
+	color:#000;
+	font-size:15px;
+}
+
+#editContent{
+	position:absolute;
+	width:400px;
+	height:200px;
+	box-sizing:box-border;
+	border:1px solid #C4C4C4;
+	box-shadow:0px 0px 10px #cccccc;
+	left:50%;
+	top:50%;
+	margin-left:-200px;
+	margin-top:-100px;
+	z-index:2;
+	display:none;
+}
+#editContent p{
+	height:40px;
+	line-height:40px;
+	margin-left:15px;
+}
+#editContent span{
+	display:inline-block;
+	width:20px;
+	height:20px;
+	background-image:url('icon.png');
+	background-position:-5px -752px;
+	position:absolute;
+	right:10px;
+	top:10px;
+	cursor:pointer;
+}
+#editContent span:hover{
+	background-position:-37px -752px;
+}
+#editContent textarea{
+	display:block;
+	margin:20px auto;
+}
+#editContent input{
+	width:80px;
+	float:right;
+	margin-right:70px;
+	background:blue;
+	border:1px solid blue;
+	color:#fff;
+	cursor:pointer;
+}
+#mask{
+	width:100%;
+	height:100%;
+	background:#fff;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+#projectView{
+	height:100%;
+	position:relative;
+	display:block;
+}
+#projectView span.addProject{
+	display:inline-block;
+	height:20px;
+	width:20px;
+	position:absolute;
+	top:10px;
+	right:30px;
+	background-image:url('icon.png');
+	background-position:-5px -80px;
+	cursor:pointer;
+}
+#projectView ul.title {
+	list-style-type:none;
+	height:40px;
+	border-bottom:1px solid #C4C4C4;
+}
+#projectView ul.title li{
+	float:left;
+	height:40px;
+	line-height:40px;
+	margin:0px 15px;
+	cursor:pointer;
+	box-sizing:box-border;
+}
+#projectView ul.title li:hover{
+	border-bottom:3px solid #7EC0EE;
+}
+#projectView ul.title li.active{
+	border-bottom:3px solid #7EC0EE;
+}
+#createNewProject{
+	position:absolute;
+	width:400px;
+	height:200px;
+	box-sizing:box-border;
+	border:1px solid #C4C4C4;
+	box-shadow:0px 0px 10px #cccccc;
+	left:50%;
+	top:50%;
+	margin-left:-200px;
+	margin-top:-100px;
+	z-index:2;
+	display:none;
+	background:#cccccc;
+}
+#changeProject{
+	position:absolute;
+	width:400px;
+	height:200px;
+	box-sizing:box-border;
+	border:1px solid #C4C4C4;
+	box-shadow:0px 0px 10px #cccccc;
+	left:50%;
+	top:50%;
+	margin-left:-200px;
+	margin-top:-100px;
+	z-index:2;
+	display:none;
+	background:#cccccc;
+}
+#createNewProject  p,#changeProject p{
+	height:40px;
+	line-height:40px;
+	margin-left:15px;
+}
+#createNewProject span,#changeProject span{
+	display:inline-block;
+	width:20px;
+	height:20px;
+	background-image:url('icon.png');
+	background-position:-5px -752px;
+	position:absolute;
+	right:10px;
+	top:10px;
+	cursor:pointer;
+}
+#createNewProject span:hover,#changeProject span:hover{
+	background-position:-37px -752px;
+}
+#createNewProject label,#changeProject label{
+	margin:20px;
+	vertical-align:top;
+}
+#createNewProject label.introduce #changeProject label.introduce{
+	position:relative;
+	top:20px;
+}
+#createNewProject textarea,#changeProject textarea{
+	margin:10px 0px;
+}
+#createNew,#changeNew{
+	width:50px;
+	position:absolute;
+	bottom:10px;
+	right:40px;
+	background:blue;
+	border:1px solid blue;
+	color:#fff;
+	cursor:pointer;
+}
+#projectList{
+	position:relative;
+	width:100%;
+	height:100%;
+}
+#projectView ul.newProject,#projectView ul.completeProject{
+	position:absolute;
+	left:0px;
+	top:40px;
+	height:90%;
+	overflow:auto;
+	width:100%;
+	list-style-type:none;
+}
+#projectView ul.completeProject{
+	display:none;
+}
+#projectView ul.newProject>li,#projectView ul.completeProject>li{
+	width:200px;
+	height:100px;
+	float:left;
+	margin:20px;
+	border:1px solid #C4C4C4;
+	position:relative;
+	cursor:pointer;
+}
+#projectView ul.newProject>li div.editOption{
+	width:70px;
+	height:50px;
+	z-index:1;
+	position:absolute;
+	top:30px;
+	right:-25px;
+	background:#fff;
+	border:1px solid #C4C4C4;
+	text-align:center;
+	display:none;
+}
+#projectView ul.completeProject>li div.editOption{
+	width:70px;
+	height:50px;
+	z-index:1;
+	position:absolute;
+	top:30px;
+	right:-25px;
+	background:#fff;
+	border:1px solid #C4C4C4;
+	text-align:center;
+	display:none;
+}
+#projectView ul.newProject>li div.editOption p,#projectView ul.completeProject>li div.editOption p{
+	height:25px;
+	line-height:25px;
+}
+#projectView ul.newProject>li div.editOption p:hover,#projectView ul.completeProject>li div.editOption p:hover{
+	background:#cccccc;
+}
+#projectView ul.newProject>li>p,#projectView ul.completeProject>li>p{
+	height:40px;
+	line-height:40px;
+	margin:0px 20px;
+	border-bottom:1px dotted #C4C4C4;
+}
+#projectView ul.newProject ul,#projectView ul.completeProject ul{
+	list-style-type:none;
+	width:100%;
+	margin-left:10px;
+}
+#projectView ul.newProject ul li,#projectView ul.completeProject ul li{
+	float:left;
+	width:30%;
+	text-align:center;
+}
+#projectView ul.newProject ul li.border,#projectView ul.completeProject ul li.border{
+	border-right:1px dotted #C4C4C4;
+}
+li.div:hover{
+	background:#FFFACD;
+}
+#timeTask{
+	width:80%;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:100%;
+	box-sizing:border-box;
+	border-left:1px solid #C4C4C4;
+	color:#C4C4C4;
+	display:none;
+}
+#timeTask p.title{
+	height:40px;
+	line-height:40px;
+	width:100%;
+	border-bottom:1px solid #C4C4C4;
+	padding-left:20px;
+	font-size:20px;
+}
+#addTask{
+	width:30%;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:100%;
+	box-sizing:border-box;
+	border-left:1px solid #C4C4C4;
+	display:none;
+}
+#addTask>ul{
+	list-style-type:none;
+	height:40px;
+}
+#addTask ul.function{
+	position:absolute;
+	top:0px;
+	left:20px;
+}
+#addTask ul.function li{
+	float:left;
+	width:25px;
+	height:25px;
+	margin-right:15px;
+	cursor:pointer;
+}
+#noteTask{
+	width:25px;
+	height:25px;
+	display:inline-block;
+	background-image:url('icon.png');
+	background-position:-5px -238px;
+	position:relative;
+	top:5px;
+}
+#noteTask:hover{
+	background-position:-37px -238px;
+}
+#cancelTask{
+	position:relative;
+	top:5px;
+}
+#saveTask{
+	position:relative;
+	top:5px;
+}
+#deleteTask{
+	position:relative;
+	top:5px;
+	display:none;
+}
+#changeTask{
+	position:relative;
+	top:5px;
+	display:none;
+}
+#childTask{
+	width:25px;
+	height:25px;
+	display:inline-block;
+	background-image:url('icon.png');
+	background-position:-5px -270px;
+	position:relative;
+	top:5px;
+}
+#childTask:hover{
+	background-position:-37px -270px;
+}
+#addTask ul.button{
+	position:absolute;
+	top:0px;
+	right:20px;
+}
+#addTask ul.button li{
+	float:left;
+	margin-right:15px;
+	cursor:pointer;
+}
+#addTask ul.button li span{
+	display:inline-block;
+	width:50px;
+	height:25px;
+	line-height:25px;
+}
+#addTask ul.button li span:hover{
+	color:blue;
+}
+#addTask ul.content{
+	position:absolute;
+	margin-top:40px;
+	width:100%;
+}
+#addTask ul.content>li{
+	width:100%;
+	height:40px;
+	border-bottom:1px solid #c4c4c4;
+	box-sizing:border-box;
+}
+#newTaskInput{
+	height:40px;
+	width:100%;
+}
+#taskType span{
+	display:inline-block;
+	height:25px;
+	width:25px;
+	margin-left:15px;
+	margin-top:5px;
+	background-image:url('icon.png');
+	cursor:pointer;
+}
+#danger{
+	background-position:-5px -590px;
+}
+#danger.hover{
+	background-position:-37px -590px;
+}
+#warn{
+	background-position:-5px -624px;
+}
+#warn.hover{
+	background-position:-37px -624px;
+}
+#normal{
+	background-position:-5px -655px;
+}
+#normal.hover{
+	background-position:-37px -655px;
+}
+#easy{
+	background-position:-5px -687px;
+}
+#easy.hover{
+	background-position:-37px -687px;
+}
+#repalceProject{
+	height:40px;
+	width:91%;
+	position:relative;
+	top:-5px;
+}
+#newProjectList{
+	width:50%;
+	list-style-type:none;
+	background:#fff;
+	border:1px solid #c4c4c4;
+	display:none;
+}
+#newProjectList li{
+	height:30px;
+	width:100%;
+	border-bottom:1px solid #c4c4c4;
+	line-height:30px;
+	cursor:pointer;
+}
+#newProjectList li span{
+	display:inline-block;
+	height:20px;
+	width:20px;
+	background-image:url('icon.png');
+	background-position:-5px -720px;
+	margin:0px 10px;
+	position:relative;
+	top:2px;
+}
+#newProjectList li:hover{
+	background:#EEE8CD;
+}
+#newProjectList li span.hover{
+	background-position:-37px -720px;
+}
+#projectMark {
+	display:inline-block;
+	width:8%;
+	height:30px;
+	background-image:url('icon.png');
+	background-position:-5px -1390px; 
+	position:relative;
+	top:5px;
+}
+#markMark {
+	display:inline-block;
+	width:8%;
+	height:30px;
+	background-image:url('icon.png');
+	background-position:-5px -1490px; 
+	position:relative;
+	top:5px;
+}
+#repalceMark{
+	height:40px;
+	width:91%;
+	position:relative;
+	top:-5px;
+}
+#newMarkList{
+	width:50%;
+	list-style-type:none;
+	background:#fff;
+	border:1px solid #c4c4c4;
+	display:none;
+}
+#newMarkList li{
+	height:30px;
+	width:100%;
+	border-bottom:1px solid #c4c4c4;
+	line-height:30px;
+	cursor:pointer;
+}
+#newMarkList li span{
+	display:inline-block;
+	height:20px;
+	width:20px;
+	background-image:url('icon.png');
+	background-position:-5px -720px;
+	margin:0px 10px;
+	position:relative;
+	top:2px;
+}
+#newMarkList li:hover{
+	background:#EEE8CD;
+}
+#newMarkList li span.hover{
+	background-position:-37px -720px;
+}
+#newInput{
+	display:none;
+}
+#allTask{
+	list-style-type:none;
+}
+#allTask ul{
+	list-style-type:none;
+}
+#allTask ul li{
+	font-size:20px;
+	color:#000;
+	cursor:pointer;
+	border-left:1px solid #c4c4c4;
+	border-right:1px solid #c4c4c4;
+	border-bottom:1px solid #c4c4c4;
+}
+#allTask>li>ul>li.hover{
+	background-color:#c4c4c4;
+}
+#allTask span{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	background-image:url('icon.png');
+	margin:0px 20px;
+	position:relative;
+	top:3px;
+}
+#allTask span.red{
+	background-position:-4px -938px;
+}
+#allTask span.yellow{
+	background-position:-4px -970px;
+}
+#allTask span.blue{
+	background-position:-4px -1002px;
+}
+#allTask span.green{
+	background-position:-4px -1034px;
+}
+#allTask span.red.hover{
+	background-position:-36px -938px;
+}
+#allTask span.yellow.hover{
+	background-position:-36px -970px;
+}
+#allTask span.blue.hover{
+	background-position:-36px -1002px;
+}
+#allTask span.green.hover{
+	background-position:-36px -1034px;
+}

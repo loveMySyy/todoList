@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>myToDo</title>
+		<link rel='stylesheet' href='style.css'>
+		<script src='jquery-3.2.1.js'></script>
+		<script src='vue.js'></script>
+	</head>
+	<body>
+		<aside id='app'>
+			<div id='myPersonal'>
+				<div id='myself'>
+				</div>
+				<p>我的私事</p>
+			</div>
+			<div id='project' class='project'>
+				<span class='mark'></span>
+				<span class='content'>项目</span>
+			</div>
+			<div id='note' class='project'>
+				<span class='mark'></span>
+				<span class='content'>便签</span>
+			</div>
+			<div id='task' class='project' v-on:click='openTask'>
+				<span class='mark'></span>
+				<span class='content'>任务</span>
+			</div>
+		</aside>
+		<section>
+			<div id='taskView'>
+				<p class='title'>任务列表</p>
+				<ul id='taskList'>
+					<li id='redTask'>
+						<p class='red'>紧急、重要</p>
+						<ul>
+							<li v-for='data in dataAll'>
+								<ul>
+									<li v-for='red in data' v-red='red.type'><span v-state='red.state'></span>{{red.name}}</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li id='yellowTask'>
+						<p class='yellow'>紧急、不重要</p>
+						<ul>
+							<li v-for='data in dataAll'>
+								<ul>
+									<li v-for='yellow in data' v-yellow='yellow.type'><span v-state='yellow.state'></span>{{yellow.name}}</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li id='blueTask'>
+						<p class='blue'>不紧急、重要</p>
+						<ul>
+							<li v-for='data in dataAll'>
+								<ul>
+									<li v-for='blue in data' v-blue='blue.type'><span v-state='blue.state'></span>{{blue.name}}</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li id='greenTask'>
+						<p class='green'>不紧急、不重要</p>
+						<ul>
+							<li v-for='data in dataAll'>
+								<ul>
+									<li v-for='green in data' v-green='green.type'><span v-state='green.state'></span>{{green.name}}</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div id='noteView' v-on:click='editOptionShow'>
+				<p>便签</p>
+				<textarea id='textareaInput' v-on:keyup.ctrl.enter='addTextarea' cols='20' rows='3' placeholder='输入备忘                  按Ctrl+Enter完成'></textarea>
+				<ul>
+					<li class='div' v-for='memo in memos' v-on:mouseenter='push' v-on:mouseleave='pull'>
+						<span class='edit'  v-on:click='showEdit'></span>
+						<div class='editOption'>
+							<p v-on:click='edit'>编辑</p>
+							<p v-on:click='deleteLi'>删除</p>
+						</div>
+						<p class='date'>{{memo.time}}<p>
+						<div class='main'>
+							<p class='toDoThing' v-for='message in memo.content'>{{message}}</p>
+						</div>
+					</li>
+				</ul>
+				<div id='editContent'>
+					<p>修改备忘</p>
+					<span v-on:click='close'></span>
+					<textarea cols='30' rows='3' v-model='str'></textarea>
+					<input type='button' value='修改' v-on:click='change'>
+				</div>
+			</div>
+			<div id='projectView' v-on:click='editOptionShow'>
+				<div id='projectList'>
+					<span class='addProject' v-on:click='newProject'>
+					</span>
+					<ul class='title'>
+						<li id='activeObject' class='active' v-on:click='active1'>活动项目</li>
+					</ul>
+					<ul class='newProject'>
+						<li class='project div' v-for='(title,index) in titles'  v-on:mouseenter='push' v-on:mouseleave='pull'>
+							<span class='edit' v-on:click='showEdit'></span>
+							<div class='editOption'>
+								<p v-on:click='edit'>编辑</p>
+								<p v-on:click='deleteLi'>删除</p>
+							</div>
+							<p>{{title}}</p>
+							<ul v-on:click='createTask'>
+								<li class='border'><p>{{projectTask[index].all}}</p><p>总任务</p></li>
+								<li class='border'><p>{{projectTask[index].done}}</p><p>已完成</p></li>
+								<li><p v-nan='parseInt(projectTask[index].done/projectTask[index].all*100)'>{{parseInt(projectTask[index].done/projectTask[index].all*100)+'%'}}</p><p>进度</p></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div id='timeTask'>
+					<p class='title'>项目"{{title}}"的任务</p>
+					<span class='addProject' v-on:click='newTask'>
+					</span>
+					<ul id='allTask'>
+						<li v-for='tasklist in tasks'>
+							<ul>
+								<li v-for='task in tasklist' v-on:mouseover='addBackground' v-on:mouseout='removeBackground' v-on:click='editTask'><span v-state='task.state' v-bind:class='task.type'  v-on:click='changeState'></span>{{task.name}}</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div id='addTask'>
+					<ul class='button'>
+						<li><span id='cancelTask' v-on:click='cancel'>取消</span></li>
+						<li><span id='saveTask' v-on:click='save'>保存</span></li>
+						<li><span id='deleteTask' v-on:click='deleteTask'>删除</span></li>
+						<li><span id='changeTask' v-on:click='changeTask'>关闭</span></li>
+					</ul>
+					<ul class='content'>
+						<li><input id='newTaskInput' type='text' autofocus placeholder='按shift+enter进行换行'></li>
+						<li id='taskType'><span id='danger' class='hover' v-on:click='changeType'></span><span id='warn' v-on:click='changeType'></span><span id='normal' v-on:click='changeType'></span><span id='easy' v-on:click='changeType'></span></li>
+						<li id='myProject'><span id='projectMark'></span><input  id='repalceProject' type='text' v-model='title' v-on:focus='changeProjectName'  v-on:keyup='searchProject'></li>
+						<ul id='newProjectList'>
+							<li v-for='project in titles' v-on:click='doneProject'><span></span>{{project}}</li>
+						</ul>
+			
+					</ul>
+				</div>
+
+				<div id='createNewProject'>
+						<p>新建项目</p>
+						<span v-on:click='close'></span>
+						<label>项目名称</label><input id='inputTitle' type='text' placeholder='请输入项目名称'/></br>
+						<label class='introduce'>项目简介</label><textarea id='inputTextarea' cols='30' rows='4'></textarea>
+						<input id='createNew' type='button' value='创建' v-on:click='create'>
+				</div>
+				<div id='changeProject'>
+						<p>修改项目</p>
+						<span v-on:click='close'></span>
+						<label>项目名称</label><input id='changeTitle' type='text'/></br>
+						<label class='introduce'>项目简介</label><textarea id='changeTextarea' cols='30' rows='4'></textarea>
+						<input id='changeNew' type='button' value='修改' v-on:click='change'>
+				</div>
+			</div>
+		</section>
+		<div id='mask'>
+		</div>
+		<script src='app.js'></script>
+	</body>
+</html>
